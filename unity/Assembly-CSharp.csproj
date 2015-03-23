@@ -701,9 +701,12 @@
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenShakeScale.cs" />
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenStop.cs" />
      <Compile Include="Assets\PlayMaker\Include\iTweenFSMEvents.cs" />
-     <Compile Include="Assets\Scripts\Playercode.cs" />
-     <Compile Include="Assets\Scripts\Wallmove.cs" />
-     <Compile Include="Assets\Scripts\area1manager.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\Playercode.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\Wallmove.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\area1manager.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\boxcode.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\boxmanager.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\ringgen.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Photon Unity Networking\PlayMaker\ReleaseNotes.txt" />
