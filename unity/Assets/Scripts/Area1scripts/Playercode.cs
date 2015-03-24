@@ -6,9 +6,8 @@ public class Playercode : MonoBehaviour {
 	public float raydistance = 0;
 	public GameObject pickedupring;
 
-	//area 1 code
-	public bool holdingring = false;
-	public bool ringalive;
+	public int holdingring =0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,20 +17,40 @@ public class Playercode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if(Application.loadedLevelName == "area1")
+//		if(Application.loadedLevelName == "area1")
+//		{
+//			if(Input.GetMouseButtonDown(0))
+//			{
+//				pickupring();
+//			}
+//
+//			if(Input.GetMouseButtonDown(0))
+//			{
+//				dropring();
+//			}
+//
+//		}
+
+
+		//testcode
+		if(Input.GetMouseButtonDown(0))
 		{
-			if(Input.GetMouseButton(0) && !holdingring )
+			switch (holdingring)
 			{
+			case 0:
 				pickupring();
-			}
-
-			if(Input.GetMouseButton(0) && holdingring )
-			{
+				break;
+			case 1:
 				dropring();
+				break;
+			case 2:
+				pickupring();
+				break;
 			}
-
-
 		}
+
+		//testcode
+
 
 	}
 
@@ -40,8 +59,8 @@ public class Playercode : MonoBehaviour {
 	{
 		pickedupring.transform.parent = null;
 		pickedupring.transform.rigidbody.useGravity = true;
-		holdingring = false;
-		ringalive = false;
+		StartCoroutine(maketwo());
+
 	}
 
 	public void pickupring()
@@ -58,17 +77,24 @@ public class Playercode : MonoBehaviour {
 			{
 				pickedupring = ringhitter.transform.gameObject;
 				pickedupring.transform.parent = transform;
-				ringalive = true;
+				holdingring = 1;
 			}
-
+		
+			StartCoroutine(waitasec());
 		}
-		StartCoroutine(waitasec());
+	
 	}
 
 	IEnumerator waitasec()
 	{
-		yield return new WaitForSeconds(1f);
-		holdingring = true;
+		yield return new WaitForSeconds(.5f);
+	
+	}
+
+	IEnumerator maketwo()
+	{
+		yield return new WaitForSeconds(.3f);
+		holdingring = 2;
 	}
 
 	void OnCollisionEnter(Collision gothit)

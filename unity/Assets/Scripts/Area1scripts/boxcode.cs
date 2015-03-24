@@ -7,6 +7,7 @@ public class boxcode : MonoBehaviour {
 
 	void OnCollisionEnter(Collision gothit)
 	{
+		print("ring got hit");
 		if(gothit.gameObject.tag == "Ring")
 		{
 			if(transform.renderer.material == gothit.gameObject.transform.renderer.material)
