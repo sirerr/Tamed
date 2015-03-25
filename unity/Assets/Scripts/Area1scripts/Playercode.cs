@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Playercode : MonoBehaviour {
 
 	public float raydistance = 0;
 	public GameObject pickedupring;
-
 	public int holdingring =0;
 
 
@@ -16,21 +15,6 @@ public class Playercode : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-//		if(Application.loadedLevelName == "area1")
-//		{
-//			if(Input.GetMouseButtonDown(0))
-//			{
-//				pickupring();
-//			}
-//
-//			if(Input.GetMouseButtonDown(0))
-//			{
-//				dropring();
-//			}
-//
-//		}
-
 
 		//testcode
 		if(Input.GetMouseButtonDown(0))
@@ -42,9 +26,6 @@ public class Playercode : MonoBehaviour {
 				break;
 			case 1:
 				dropring();
-				break;
-			case 2:
-				pickupring();
 				break;
 			}
 		}
@@ -80,21 +61,16 @@ public class Playercode : MonoBehaviour {
 				holdingring = 1;
 			}
 		
-			StartCoroutine(waitasec());
+		//	StartCoroutine(waitasec());
 		}
 	
 	}
 
-	IEnumerator waitasec()
-	{
-		yield return new WaitForSeconds(.5f);
-	
-	}
 
 	IEnumerator maketwo()
 	{
 		yield return new WaitForSeconds(.3f);
-		holdingring = 2;
+		holdingring = 0;
 	}
 
 	void OnCollisionEnter(Collision gothit)

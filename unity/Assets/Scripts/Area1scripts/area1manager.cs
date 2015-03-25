@@ -39,11 +39,17 @@ public class area1manager : MonoBehaviour {
 
 		}
 
-		if(level1done)
+		if(ringcouter == totalringsneeded)
 		{
 			level1done = false;
 			Application.LoadLevel("area1");
 		}
+
+//		if(level1done)
+//		{
+//			level1done = false;
+//			Application.LoadLevel("area1");
+//		}
 
 	}
 }

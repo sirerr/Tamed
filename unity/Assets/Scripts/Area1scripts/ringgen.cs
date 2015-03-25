@@ -33,18 +33,17 @@ public class ringgen : MonoBehaviour {
 				startmakingrings();
 				break;
 			case 1:
-				if	(playercode1.holdingring == 1)
+				if	(playercode1.holdingring == 0)
 					{	
-						ringcreatestate = 1;
+				print (a1man.startringgen);
+						a1man.startringgen = true;
 					}
-			 if(playercode1.holdingring == 2)
-				{	
-					ringcreatestate = 2;
-				}
-
 				break;
-			case 2:
-			startmakingrings();
+		case 2:
+				if(playercode1.holdingring == 1)
+			{
+				ringcreatestate = 1;
+			}
 			break;
 		}		
 	}
@@ -53,7 +52,7 @@ public class ringgen : MonoBehaviour {
 	public void startmakingrings()
 	{
 		Instantiate(rings[ringcolorcounter],transform.position,transform.rotation);
-		ringcreatestate = 1;
+		ringcreatestate = 2;
 		if(ringcolorcounter == rings.Length-1)
 			{
 				ringcolorcounter = 0;
