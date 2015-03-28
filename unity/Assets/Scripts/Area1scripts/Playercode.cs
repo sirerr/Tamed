@@ -50,7 +50,7 @@ public class Playercode : MonoBehaviour {
 
 		RaycastHit ringhitter;
 
-		if(Physics.Raycast(transform.position,Vector3.forward,out ringhitter,raydistance))
+		if(Physics.Raycast(transform.position,transform.forward,out ringhitter,raydistance))
 		{
 			//print("raycasting right now");
 

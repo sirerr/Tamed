@@ -17,10 +17,16 @@ public class area1manager : MonoBehaviour {
 	//code for counter
 	public int ringcouter = 0;
 
+	//time to wait for starting walls moving
+	public float startwallsmoving = 0;
+
 	// Use this for initialization
 	void Start () {
 		startringgen = false;
 		ringcouter = 0;
+		Screen.lockCursor = true;
+
+		StartCoroutine(wallstartingtomove());
 	}
 	
 	// Update is called once per frame
@@ -45,11 +51,15 @@ public class area1manager : MonoBehaviour {
 			Application.LoadLevel("area1");
 		}
 
-//		if(level1done)
-//		{
-//			level1done = false;
-//			Application.LoadLevel("area1");
-//		}
+	
+
+	}
+
+	IEnumerator wallstartingtomove()
+	{
+		yield return new WaitForSeconds(startwallsmoving);
+		transform.GetComponent<Wallmove>().startwalls = true;
+		startringgen = true;
 
 	}
 }
