@@ -629,8 +629,10 @@
      <Compile Include="Assets\Scripts\Area1scripts\area1manager.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\boxcode.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\boxmanager.cs" />
+     <Compile Include="Assets\Scripts\Area1scripts\deathplane.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\ringgen.cs" />
      <Compile Include="Assets\Scripts\Area2scripts\riseup.cs" />
+     <Compile Include="Assets\Scripts\Area2scripts\risingobj.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Plugins\Android\assets\donotdelete.txt" />

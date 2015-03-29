@@ -11,8 +11,13 @@ public class area1manager : MonoBehaviour {
 	public bool startringgen = false;
 	public bool firsttimegen = true;
 
-	//total
+	//total rings needed to finish part 1
 	public int totalringsneeded = 0;
+
+	//bool for task 1
+	public bool task1start = false;
+
+	//
 
 	//code for counter
 	public int ringcouter = 0;
@@ -47,13 +52,25 @@ public class area1manager : MonoBehaviour {
 
 		if(ringcouter == totalringsneeded)
 		{
-			level1done = false;
-			Application.LoadLevel("area1");
+			level1done = true;;
+			//Application.LoadLevel("area1");
+			print ("first part complete");
+			//stop the walls and rings from doing stuff
+			transform.GetComponent<Wallmove>().startwalls = false;
+			task1start = true;
+			ringcouter = 0;
+
 		}
 
-	
+		if(task1start)
+		{
+			task1start = false;
+		}	
 
 	}
+
+
+
 
 	IEnumerator wallstartingtomove()
 	{

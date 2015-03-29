@@ -6,6 +6,11 @@ public class Wallmove : MonoBehaviour {
 	public GameObject[] walls;
 	public bool startwalls = false;
 	public float wallspeed;
+
+	//area1manager
+	public area1manager area1;
+
+
 	// Use this for initialization
 	void Start () {
 	

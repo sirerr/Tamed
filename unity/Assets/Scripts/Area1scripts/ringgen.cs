@@ -16,12 +16,18 @@ public class ringgen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		if(a1man.task1start)
+		{
+			ringcreatestate = 11;
+			print(ringcreatestate);
+		}
+
 		if(a1man.startringgen)
 		{
-			print ("starting gen");
+			//print ("starting gen");
 			a1man.startringgen = false;
 			//startringgenerator();
-			print (a1man.startringgen);
+		//	print (a1man.startringgen);
 			//test code
 			ringcreatestate = 0;
 			//test code
@@ -35,7 +41,7 @@ public class ringgen : MonoBehaviour {
 			case 1:
 				if	(playercode1.holdingring == 0)
 					{	
-				print (a1man.startringgen);
+			//	print (a1man.startringgen);
 						a1man.startringgen = true;
 					}
 				break;
@@ -44,6 +50,9 @@ public class ringgen : MonoBehaviour {
 			{
 				ringcreatestate = 1;
 			}
+			break;
+		case 11:
+
 			break;
 		}		
 	}

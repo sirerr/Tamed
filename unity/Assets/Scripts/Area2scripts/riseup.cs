@@ -35,7 +35,7 @@ public class riseup : MonoBehaviour {
 	{
 		if (skyceiling.gameObject.name == "gameceiling") 
 		{
-			Application.LoadLevel("Scene1");
+			Application.LoadLevel("area2");
 		}
 	}
 }
