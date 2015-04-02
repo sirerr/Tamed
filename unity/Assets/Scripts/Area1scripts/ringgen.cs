@@ -18,17 +18,15 @@ public class ringgen : MonoBehaviour {
 	
 		if(a1man.task1start)
 		{
-			ringcreatestate = 11;
-			print(ringcreatestate);
+			a1man.startringgen = false;
+			ringcreatestate = 5;
 		}
 
 		if(a1man.startringgen)
 		{
 			//print ("starting gen");
 			a1man.startringgen = false;
-			//startringgenerator();
-		//	print (a1man.startringgen);
-			//test code
+	
 			ringcreatestate = 0;
 			//test code
 		}
@@ -36,7 +34,11 @@ public class ringgen : MonoBehaviour {
 		switch (ringcreatestate)
 		{
 			case 0:
+
+				if(!a1man.task1start)
+			{
 				startmakingrings();
+			}
 				break;
 			case 1:
 				if	(playercode1.holdingring == 0)
@@ -51,15 +53,14 @@ public class ringgen : MonoBehaviour {
 				ringcreatestate = 1;
 			}
 			break;
-		case 11:
-
-			break;
 		}		
 	}
 	
 	//use this function to create rings
 	public void startmakingrings()
 	{
+		if(!a1man.task1start)
+		{
 		Instantiate(rings[ringcolorcounter],transform.position,transform.rotation);
 		ringcreatestate = 2;
 		if(ringcolorcounter == rings.Length-1)
@@ -70,6 +71,8 @@ public class ringgen : MonoBehaviour {
 			{
 				ringcolorcounter++;
 			}
+		}
+
 	}
 
 }

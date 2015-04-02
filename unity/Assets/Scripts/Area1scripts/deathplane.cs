@@ -7,6 +7,10 @@ public class deathplane : MonoBehaviour {
 	{
 		Destroy(fallingobj.gameObject);
 
+		if(fallingobj.gameObject.tag == "Box")
+		{
+			Destroy(fallingobj.gameObject);
+		}
 	}
 
 }

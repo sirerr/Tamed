@@ -24,8 +24,12 @@ public class boxmanager : MonoBehaviour {
 			print("task1 complete");
 			for(int i = 0; i<boxes.Length; i++)
 			{
-				boxes[i].rigidbody.isKinematic = false;
-				boxes[i].rigidbody.useGravity = true;
+				if(boxes[i]!= null)
+				{
+					boxes[i].rigidbody.isKinematic = false;
+					boxes[i].rigidbody.useGravity = true;
+					boxes[i].rigidbody.constraints = RigidbodyConstraints.None;
+				}
 			}
 		}
 

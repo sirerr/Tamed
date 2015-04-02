@@ -9,7 +9,6 @@ public class area1manager : MonoBehaviour {
 
 	//starting the game
 	public bool startringgen = false;
-	public bool firsttimegen = true;
 
 	//total rings needed to finish part 1
 	public int totalringsneeded = 0;
@@ -62,15 +61,9 @@ public class area1manager : MonoBehaviour {
 
 		}
 
-		if(task1start)
-		{
-			task1start = false;
-		}	
+	
 
 	}
-
-
-
 
 	IEnumerator wallstartingtomove()
 	{
