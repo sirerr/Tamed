@@ -21,7 +21,7 @@ public class boxmanager : MonoBehaviour {
 
 		if(area1.task1start)
 		{
-			print("task1 complete");
+		//	print("task1 complete");
 			for(int i = 0; i<boxes.Length; i++)
 			{
 				if(boxes[i]!= null)

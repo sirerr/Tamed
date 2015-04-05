@@ -6,6 +6,7 @@ public class Playercode : MonoBehaviour {
 	public float raydistance = 0;
 	public GameObject pickedupring;
 	public int holdingring =0;
+	public area1manager area1;
 
 
 	// Use this for initialization
@@ -16,7 +17,7 @@ public class Playercode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		//testcode
+	 if(area1.allowinput && !area1.task1start){
 		if(Input.GetMouseButtonDown(0))
 		{
 			switch (holdingring)
@@ -29,8 +30,8 @@ public class Playercode : MonoBehaviour {
 				break;
 			}
 		}
-
-		//testcode
+	}
+	 
 
 
 	}
