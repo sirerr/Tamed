@@ -35,11 +35,15 @@ public class area1manager : MonoBehaviour {
 	//rain script reference
 	public part2 rainscriptref;
 
+	//end level timeamount
+	public float endtime = 0;
+
+
 	// Use this for initialization
 	void Start () {
 		startringgen = false;
 		ringcouter = 0;
-		Screen.lockCursor = true;
+	//	Screen.lockCursor = true;
 
 		StartCoroutine(wallstartingtomove());
 	}
@@ -58,6 +62,14 @@ public class area1manager : MonoBehaviour {
 			startringgen = true;
 	//		print("start rings");
 
+		}
+
+		if(transform.GetComponent<Wallmove>().wallspeed < 0)
+		{
+			rainscriptref.startringshower = false;
+			transform.GetComponent<Wallmove>().wallspeed = 0;
+
+			StartCoroutine(endlevel());
 		}
 
 		if(ringcouter == totalringsneeded)
@@ -89,6 +101,8 @@ public class area1manager : MonoBehaviour {
 		yield return new WaitForSeconds (starttherain);
 		rainscriptref.startringshower = true;
 		rainmanager.gameObject.SetActive(true);
+		transform.GetComponent<Wallmove>().startwalls = true;
+
 	}
 
 	IEnumerator wallstartingtomove()
@@ -97,6 +111,13 @@ public class area1manager : MonoBehaviour {
 		allowinput = true;
 		transform.GetComponent<Wallmove>().startwalls = true;
 		startringgen = true;
+
+	}
+
+	IEnumerator endlevel()
+	{
+		yield return new WaitForSeconds(endtime);
+		Application.LoadLevel("area1");
 
 	}
 }

@@ -24,6 +24,8 @@ public class Wallmove : MonoBehaviour {
 			startwalls = true;
 		}
 
+
+
 		if(startwalls)
 		{
 			for(int i =0; i<walls.Length;i++)
