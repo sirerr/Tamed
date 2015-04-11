@@ -64,7 +64,7 @@ public class area1manager : MonoBehaviour {
 
 		}
 
-		if(transform.GetComponent<Wallmove>().wallspeed < 0)
+		if(transform.GetComponent<Wallmove>().wallspeed < 0.0)
 		{
 			rainscriptref.startringshower = false;
 			transform.GetComponent<Wallmove>().wallspeed = 0;
