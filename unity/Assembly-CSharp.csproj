@@ -624,6 +624,8 @@
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenShakeScale.cs" />
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenStop.cs" />
      <Compile Include="Assets\PlayMaker\Include\iTweenFSMEvents.cs" />
+     <Compile Include="Assets\Scripts\Area0scripts\ReverseNormals.cs" />
+     <Compile Include="Assets\Scripts\Area0scripts\area0manager.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\Playercode.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\Wallmove.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\area1manager.cs" />
