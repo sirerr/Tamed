@@ -11,7 +11,7 @@ public class boxcode : MonoBehaviour {
 	//	print("ring got hit");
 		if(gothit.gameObject.tag == "Ring")
 		{
-			if(transform.renderer.material.color == gothit.gameObject.transform.renderer.material.color)
+			if(transform.renderer.material.color == gothit.gameObject.transform.renderer.materials[1].color)
 			{
 				area1.ringcouter ++;
 			}
