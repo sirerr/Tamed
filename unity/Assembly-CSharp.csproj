@@ -737,8 +737,9 @@
      <Compile Include="Assets\Scripts\Area1scripts\deathplane.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\part2.cs" />
      <Compile Include="Assets\Scripts\Area1scripts\ringgen.cs" />
+     <Compile Include="Assets\Scripts\Area2scripts\area2manager.cs" />
+     <Compile Include="Assets\Scripts\Area2scripts\floatobj.cs" />
      <Compile Include="Assets\Scripts\Area2scripts\riseup.cs" />
-     <Compile Include="Assets\Scripts\Area2scripts\risingobj.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\NGUI\ReadMe - 3.8.2.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 1.shader" />

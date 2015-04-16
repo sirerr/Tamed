@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class risingobj : MonoBehaviour {
+public class area2manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,12 +11,5 @@ public class risingobj : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-
-	public void hitbycast()
-	{
-
-
 	}
 }
