@@ -117,7 +117,7 @@ public class area1manager : MonoBehaviour {
 	IEnumerator endlevel()
 	{
 		yield return new WaitForSeconds(endtime);
-		Application.LoadLevel("area1");
+		Application.LoadLevel("area2");
 
 	}
 }

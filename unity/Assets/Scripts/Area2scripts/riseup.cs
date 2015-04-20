@@ -14,13 +14,30 @@ public class riseup : MonoBehaviour {
 	public GameObject lastbox;
 	// check to see if it is the first box looked at
 	private bool firsttime = true;
+	//time for the raising of the player
+	public float startrisefloat = 0;
 
 	void Start()
 	{
-
+		StartCoroutine(timetorise());
+		StartCoroutine(increasespeed());
 
 	}
 
+	IEnumerator timetorise()
+	{
+		yield return new WaitForSeconds(startrisefloat);
+		startgoingup = true;
+	}
+
+	IEnumerator increasespeed()
+	{
+		yield return new WaitForSeconds(60f);
+		if(floatspeed!=15)
+		{
+			floatspeed = speedinc +floatspeed;
+		}
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -29,6 +46,10 @@ public class riseup : MonoBehaviour {
 		{
 			transform.Translate(0,floatspeed * Time.deltaTime,0,Space.World);
 			transform.rigidbody.useGravity = false;
+		}
+		else
+		{
+			transform.rigidbody.useGravity = true;
 		}
 
 		if (Input.GetKeyDown (KeyCode.F)) 
@@ -43,7 +64,7 @@ public class riseup : MonoBehaviour {
 	{
 		RaycastHit hitout;
 		
-		if(Physics.Raycast(centereye.transform.position,centereye.transform.TransformDirection(Vector3.forward), out hitout))
+		if(Physics.Raycast(centereye.transform.position,centereye.transform.TransformDirection(Vector3.forward), out hitout, Mathf.Infinity,1<<LayerMask.NameToLayer("cubes")))
 		{
 			if(hitout.transform.gameObject.transform.tag == "cangrab")
 			{
@@ -52,6 +73,7 @@ public class riseup : MonoBehaviour {
 					firsttime = false;
 					lastbox = hitout.transform.gameObject;
 					lastbox.transform.SendMessage("onlookenter");
+					startgoingup = false;
 				}
 				else
 				{
@@ -63,19 +85,19 @@ public class riseup : MonoBehaviour {
 						// do what is needed for new box
 						lastbox = hitout.transform.gameObject;
 						lastbox.transform.SendMessage("onlookenter");
+						startgoingup = false;
 					}
 						else
 					{
 						lastbox.transform.SendMessage("onlookenter");
+						startgoingup = false;
 					}
 				}
 			}
 			else
 			{
-//				if(lastbox!=null)
-//				{
-//					lastbox.SendMessage("onlookexit");
-//				}
+
+				startgoingup = true;
 			}
 		}
 		else
@@ -83,7 +105,9 @@ public class riseup : MonoBehaviour {
 			if(lastbox!=null)
 			{
 				lastbox.SendMessage("onlookexit");
+				startgoingup = true;
 			}
+
 		}
 	}
 
