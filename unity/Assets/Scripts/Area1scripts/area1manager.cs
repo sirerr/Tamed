@@ -38,6 +38,19 @@ public class area1manager : MonoBehaviour {
 	//end level timeamount
 	public float endtime = 0;
 
+	//part 3 bool
+	public bool part3startingbool = false;
+
+	//part 3 before start time
+	public float part3beforetime = 0;
+
+	//part 3 play time
+	public float part3playtime = 0;
+
+	//per wall speed positive
+	public float personalwallspeed = 0;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -69,7 +82,7 @@ public class area1manager : MonoBehaviour {
 			rainscriptref.startringshower = false;
 			transform.GetComponent<Wallmove>().wallspeed = 0;
 
-			StartCoroutine(endlevel());
+			StartCoroutine(part3starting());
 		}
 
 		if(ringcouter == totalringsneeded)
@@ -114,10 +127,30 @@ public class area1manager : MonoBehaviour {
 
 	}
 
+	IEnumerator part3starting()
+	{
+		print ("starting part 3");
+		yield return new WaitForSeconds(part3beforetime);
+		part3startingbool = true;
+		//make walls go faster
+		for(int i =0; i<transform.GetComponent<Wallmove>().walls.Length;i++)
+		{
+			transform.GetComponent<Wallmove>().walls[i].transform.GetComponent<wallbehavoir>().perwallspeed = personalwallspeed;
+		}
+
+		yield return new WaitForSeconds(part3playtime);
+		part3startingbool = false;
+		for(int i =0; i<transform.GetComponent<Wallmove>().walls.Length;i++)
+		{
+			transform.GetComponent<Wallmove>().walls[i].transform.GetComponent<wallbehavoir>().perwallspeed = 0;
+		}
+		StartCoroutine(endlevel());
+	}
+
 	IEnumerator endlevel()
 	{
 		yield return new WaitForSeconds(endtime);
-		Application.LoadLevel("area2");
+		Application.LoadLevel("area1");
 
 	}
 }

@@ -16,13 +16,85 @@ public class Playercode : MonoBehaviour {
 	public float wrongringspeed = 0;
 	public Wallmove wallmoveref;
 
+	//part 3 vars
+	//check if first time looking at walls
+	public bool firstwalllook = true;
+
+	//last wall looked at
+	public GameObject lastwall;
+
+	//negative spee
+	public float negativespeed = 0;
+
+	//
+
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
+
+	public void pushback()
+	{
+		RaycastHit lookatwall;
+
+		if(Physics.Raycast(transform.position,transform.forward,out lookatwall,raydistance))
+		{
+			if(lookatwall.transform.gameObject.tag == "Walls")
+			{
+				if(firstwalllook)
+				{
+					firstwalllook = false;
+					lastwall = lookatwall.transform.gameObject;
+					lastwall.transform.GetComponent<wallbehavoir>().perwallspeed = area1.personalwallspeed * negativespeed;
+					//print to console
+					print (lastwall);
+				}
+				else
+				{
+					if(lastwall.name!=lookatwall.transform.gameObject.name)
+					{
+						lastwall.transform.GetComponent<wallbehavoir>().perwallspeed = area1.personalwallspeed;
+						lastwall = lookatwall.transform.gameObject;
+						lastwall.transform.GetComponent<wallbehavoir>().perwallspeed = area1.personalwallspeed * negativespeed;
+						//print to console
+						print (lastwall);
+					}
+					else
+					{
+						lastwall.transform.GetComponent<wallbehavoir>().perwallspeed = area1.personalwallspeed * negativespeed;
+
+						//print to console
+						print (lastwall);
+					}
+				}
+
+			}
+			else
+			{
+				if(lastwall!=null)
+				{
+					lastwall.transform.GetComponent<wallbehavoir>().perwallspeed = area1.personalwallspeed;
+				}
+			}
+
+		}
+		else
+		{
+			if(lastwall!=null)
+			{
+				lastwall.transform.GetComponent<wallbehavoir>().perwallspeed = area1.personalwallspeed;
+			}
+		}
+	}
+
+
 	// Update is called once per frame
 	void Update () {
+
+	if(area1.part3startingbool)
+		{
+			pushback();
+		}
 
 	 if(area1.allowinput && !area1.task1start){
 		if(Input.GetMouseButtonDown(0))
