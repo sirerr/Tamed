@@ -7,6 +7,7 @@ public class area1manager : MonoBehaviour {
 	public static bool level1done = false;
 	public AudioClip task1sound;
 	public AudioClip task2sound;
+	public AudioClip task3sound;
 
 	//starting the game
 	public bool startringgen = false;
@@ -50,6 +51,12 @@ public class area1manager : MonoBehaviour {
 	//per wall speed positive
 	public float personalwallspeed = 0;
 
+	//ui instruction labels
+	public UILabel instruct1;
+	public UILabel instruct2;
+	public UILabel instruct3;
+	public float instructtime = 0;
+
 
 
 	// Use this for initialization
@@ -60,22 +67,36 @@ public class area1manager : MonoBehaviour {
 
 		StartCoroutine(wallstartingtomove());
 	}
-	
+
+	IEnumerator exitgame()
+	{
+		yield return new WaitForSeconds(3f);
+		if(Input.GetMouseButtonDown(1))
+		{
+			OVRPluginEvent.Issue(RenderEventType.PlatformUI);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
+		if(Input.GetMouseButtonDown(1))
+		{
+			StartCoroutine(exitgame());
+		}
+
 		if(deathrestart1)
 		{
 			deathrestart1 = false;
-			Application.LoadLevel("area1");
+			Application.LoadLevel("death0");
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			startringgen = true;
-	//		print("start rings");
-
-		}
+//		if(Input.GetKeyDown(KeyCode.Space))
+//		{
+//			startringgen = true;
+//	//		print("start rings");
+//
+//		}
 
 		if(transform.GetComponent<Wallmove>().wallspeed < 0.0)
 		{
@@ -111,26 +132,37 @@ public class area1manager : MonoBehaviour {
 
 	IEnumerator timeforrain()
 	{
+		audio.PlayOneShot(task2sound);
+		instruct2.gameObject.SetActive(true);
 		yield return new WaitForSeconds (starttherain);
 		rainscriptref.startringshower = true;
 		rainmanager.gameObject.SetActive(true);
 		transform.GetComponent<Wallmove>().startwalls = true;
+		yield return new WaitForSeconds(instructtime);
+		instruct2.gameObject.SetActive(false);
 
 	}
 
 	IEnumerator wallstartingtomove()
 	{
+		audio.PlayOneShot(task1sound);
+		instruct1.gameObject.SetActive(true);
 		yield return new WaitForSeconds(startwallsmoving);
+
 		allowinput = true;
 		transform.GetComponent<Wallmove>().startwalls = true;
 		startringgen = true;
-
+		yield return new WaitForSeconds(instructtime);
+		instruct1.gameObject.SetActive(false);
 	}
 
 	IEnumerator part3starting()
 	{
-		print ("starting part 3");
+
+		audio.PlayOneShot(task3sound);
+		instruct3.gameObject.SetActive(true);
 		yield return new WaitForSeconds(part3beforetime);
+
 		part3startingbool = true;
 		//make walls go faster
 		for(int i =0; i<transform.GetComponent<Wallmove>().walls.Length;i++)
@@ -150,7 +182,7 @@ public class area1manager : MonoBehaviour {
 	IEnumerator endlevel()
 	{
 		yield return new WaitForSeconds(endtime);
-		Application.LoadLevel("area1");
+		Application.LoadLevel("thanks0");
 
 	}
 }

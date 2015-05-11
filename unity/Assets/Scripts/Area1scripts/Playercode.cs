@@ -26,7 +26,8 @@ public class Playercode : MonoBehaviour {
 	//negative spee
 	public float negativespeed = 0;
 
-	//
+	//audio sounds
+	public AudioClip ringpickupsound;
 
 	// Use this for initialization
 	void Start () {
@@ -141,6 +142,7 @@ public class Playercode : MonoBehaviour {
 			print (ringhit2.transform.name);
 			if(ringhit2.transform.gameObject.transform.name != "greenring(Clone)" && ringhit2.transform.gameObject.transform.tag !="Walls")
 			{
+				audio.PlayOneShot(ringpickupsound);
 				Instantiate(smileyfaceps,ringhit2.transform.position,ringhit2.transform.rotation);
 				Destroy(ringhit2.transform.gameObject);
 				wallmoveref.wallspeed = wallmoveref.wallspeed - rightringspeed;
@@ -170,6 +172,7 @@ public class Playercode : MonoBehaviour {
 
 			if(ringhitter.transform.gameObject.transform.tag == "Ring")
 			{
+				audio.PlayOneShot(ringpickupsound);
 				pickedupring = ringhitter.transform.gameObject;
 				pickedupring.transform.parent = transform;
 				holdingring = 1;
